@@ -2,10 +2,12 @@ CC=gcc
 CFLAGS=
 PROGNAME=clox
 
-all: final
+# runs if no args passed to 'make' command
+all: compile
 
+# compiles and links, outputting single binary
 # $^ is auto variable for the list of deps
-final: main.o memory.o chunk.o
+compile: main.o memory.o chunk.o debug.o
 	$(CC) $(CFLAGS) -o $(PROGNAME) $^
 	@chmod +x $(PROGNAME)
 
@@ -17,4 +19,6 @@ clean:
 	rm *.o $(PROGNAME)
 
 run:
-	./$(PROGNAME)
+	@./$(PROGNAME)
+
+dev: compile run
