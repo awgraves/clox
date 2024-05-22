@@ -1,22 +1,20 @@
+CC=gcc
 CFLAGS=
+PROGNAME=clox
 
 all: final
 
+# $^ is auto variable for the list of deps
 final: main.o memory.o chunk.o
-	gcc $(CFLAGS) -o clox main.o memory.o chunk.o
+	$(CC) $(CFLAGS) -o $(PROGNAME) $^
 	@chmod +x clox
 
-main.o: main.c
-	gcc $(CFLAGS) -c main.c
-
-chunk.o: chunk.c
-	gcc $(CFLAGS) -c chunk.c
-
-memory.o: memory.c
-	gcc $(CFLAGS) -c memory.c
+# create object files with matching names to C files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
 
 clean:
-	rm main.o chunk.o memory.o clox
+	rm *.o $(PROGNAME)
 
 run:
-	./clox
+	./$(PROGNAME)
