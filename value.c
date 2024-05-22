@@ -17,7 +17,6 @@ void writeValueArray(ValueArray* array, Value value) {
 	}
 
 	array->values[array->count] = value;
-	// note, seems odd to increment ahead of time?
 	array->count++;
 }
 
