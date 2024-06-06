@@ -7,7 +7,7 @@ all: compile
 
 # compiles and links, outputting single binary
 # $^ is auto variable for the list of deps
-compile: main.o memory.o chunk.o debug.o value.o
+compile: main.o memory.o chunk.o debug.o value.o vm.o
 	$(CC) $(CFLAGS) -o $(PROGNAME) $^
 	@chmod +x $(PROGNAME)
 
