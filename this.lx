@@ -1,0 +1,12 @@
+class Foo {
+	bar() {
+		this.baz();
+	}
+
+	baz() {
+		print("baz");
+	}
+}
+
+var foo = Foo();
+foo.bar();
